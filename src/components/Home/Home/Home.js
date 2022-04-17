@@ -3,12 +3,14 @@ import { Carousel } from 'react-bootstrap';
 import image1 from '../../../images/image1.jpg';
 import image2 from '../../../images/iamge2.jpg';
 import iamge3 from '../../../images/iamge3.jpg';
+// import Services from '../../Services/Services';
+import Services from './../../Services/Services';
 
 
 const Home = () => {
     return (
         <div>
-            <Carousel className='container mt-5'>
+            <Carousel className=''>
                 <Carousel.Item interval={1000}>
                     <img
                         className="d-block w-100 dark-overlay"
@@ -42,6 +44,12 @@ const Home = () => {
                     </Carousel.Caption>
                 </Carousel.Item>
             </Carousel>
+
+
+            {/*********************************** 
+                       Service Section 
+             ********************************/}
+            <Services></Services>
 
         </div>
     );
