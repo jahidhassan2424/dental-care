@@ -1,24 +1,24 @@
 import React from 'react';
+import './home.css'
 import { Carousel } from 'react-bootstrap';
 import image1 from '../../../images/image1.jpg';
 import image2 from '../../../images/iamge2.jpg';
 import iamge3 from '../../../images/iamge3.jpg';
-// import Services from '../../Services/Services';
 import Services from './../../Services/Services';
 
 
 const Home = () => {
     return (
         <div>
-            <Carousel className=''>
+            <Carousel className='container '>
                 <Carousel.Item interval={1000}>
                     <img
                         className="d-block w-100 dark-overlay"
                         src={image1}
                         alt="First slide"
                     />
-                    <Carousel.Caption>
-                        <h3>Always Ready for Service</h3>
+                    <Carousel.Caption className='slide-title '>
+                        <h3 >Always Ready for Service</h3>
                         <p>Jahid Hassan. DDS (Doctor of Dental Surgery) and DMD from Dhanka Dental university</p>
                     </Carousel.Caption>
                 </Carousel.Item>
@@ -28,7 +28,7 @@ const Home = () => {
                         src={image2}
                         alt="Second slide"
                     />
-                    <Carousel.Caption>
+                    <Carousel.Caption className='slide-title '>
                         <h3>High Quality Equipments</h3>
                         <p>We have the equipments of very high quality</p>
                     </Carousel.Caption>
@@ -38,7 +38,7 @@ const Home = () => {
                         className="d-block w-100"
                         src={iamge3}
                     />
-                    <Carousel.Caption>
+                    <Carousel.Caption className='slide-title '>
                         <h3>Good Service Guaranteed</h3>
                         <p>We are very much commited to provide you the best service possible.</p>
                     </Carousel.Caption>
