@@ -32,7 +32,7 @@ const Header = () => {
                                 user ?
                                     <>
                                         <Nav.Link as={Link} className='text-white hover-effect' to="login">{
-                                            user?.displayName ?
+                                            user.displayName ?
                                                 `HELLO ${user.displayName}`
                                                 :
                                                 ""
