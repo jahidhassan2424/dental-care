@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import './Login.css'
 import { Button, Form } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuthState, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import auth from './../../firebase.init';
+import { useUpdatePassword } from 'react-firebase-hooks/auth';
+import { useSendEmailVerification } from 'react-firebase-hooks/auth';
+import { useSendPasswordResetEmail } from 'react-firebase-hooks/auth';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
     const [
@@ -12,19 +17,32 @@ const Login = () => {
         loading,
         error,
     ] = useSignInWithEmailAndPassword(auth);
+
+    const [email, setEmail] = useState('');
     const navigate = useNavigate();
-    const handleLogin = (event) => {
+
+    const emailRef = useRef('');
+    const passRef = useRef('');
+
+    const [sendEmailVerification, sendingVerification, errorVerification] = useSendEmailVerification(auth);
+    const [sendPasswordResetEmail, sendingReset, errorReset] = useSendPasswordResetEmail(auth);
+    const [updatePassword, updating, error1] = useUpdatePassword(auth);
+
+
+
+    const handleLogin = event => {
         event.preventDefault();
-        const email = event.target.email.value;
+        const email = emailRef.current.value;
         const password = event.target.password.value;
         signInWithEmailAndPassword(email, password)
             .then(result => {
-                console.log("Login Successful");
+                toast("Login Successful!");
             })
             .catch(error => {
                 console.log(error.message);
             })
     }
+
     if (user) {
         navigate("/")
     }
@@ -34,17 +52,18 @@ const Login = () => {
 
     return (
         <div className='login-body'>
+            <ToastContainer />
             <Form onSubmit={handleLogin} className='container  '>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <h1 className='text-center'>Login</h1>
                     <Form.Label className='fs-4'>Email address</Form.Label>
-                    <Form.Control name="email" type="email" placeholder="Enter email" />
+                    <Form.Control ref={emailRef} name="email" type="email" placeholder="Enter email" />
 
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicPassword">
                     <Form.Label className='fs-4'>Password</Form.Label>
-                    <Form.Control name="password" type="password" placeholder="Password" />
+                    <Form.Control ref={passRef} name="password" type="password" placeholder="Password" />
                 </Form.Group>
                 <p className='text-danger fw-bold'>{error?.message}</p>
                 <p className='fs-5'>New to Dental Care? <Link className='text-decoration-none text-danger fw-bold' to={'/register'}>Register</Link></p>
@@ -53,9 +72,21 @@ const Login = () => {
                     <Button className='submit-button' variant="primary" type="submit">
                         Submit
                     </Button>
+                    <p className='text-danger forget-pass' onClick={async () => {
+                        {
+                            if (emailRef.current.value) {
+                                await sendPasswordResetEmail(emailRef.current.value);
+                                toast("Password Reset Email Sent");
+                            }
+                            else {
+                                toast("Enter email address");
+                            }
+                        }
+
+                    }}>Forget Password?</p >
                 </div>
-            </Form>
-        </div>
+            </Form >
+        </div >
     );
 };
 

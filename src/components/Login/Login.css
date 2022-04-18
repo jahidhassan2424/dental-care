@@ -10,3 +10,8 @@
     border-radius: 10px !important;
     border: 0 !important;
 }
+.forget-pass{
+    cursor: pointer;
+    margin-top: 20px;
+    font-size: 20px;
+}
