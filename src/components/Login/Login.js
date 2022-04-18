@@ -12,22 +12,24 @@ import 'react-toastify/dist/ReactToastify.css';
 import SocialLogin from '../Shared/SocialLogin/SocialLogin';
 
 const Login = () => {
-    const location = useLocation();
+    // State Declearation
     const [
         signInWithEmailAndPassword,
         user,
         loading,
         error,
     ] = useSignInWithEmailAndPassword(auth);
-
     const [email, setEmail] = useState('');
-    const navigate = useNavigate();
 
+    // Hook Declearation
+    const navigate = useNavigate();
+    const location = useLocation();
     const emailRef = useRef('');
     const passRef = useRef('');
-
     const [sendPasswordResetEmail, sendingReset, errorReset] = useSendPasswordResetEmail(auth);
 
+
+    // Login Button Handle
     const handleLogin = event => {
         event.preventDefault();
         const email = emailRef.current.value;
@@ -41,8 +43,9 @@ const Login = () => {
             })
     }
 
+
     if (user) {
-        navigate("/")
+        navigate("/");
     }
     if (error) {
         console.log(error);
@@ -55,7 +58,11 @@ const Login = () => {
 
     return (
         <div className='login-body'>
+
+            {/* Toast */}
             <ToastContainer />
+
+            {/* Login Form */}
             <Form onSubmit={handleLogin} className='container  '>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <h1 className='text-center'>Login</h1>
@@ -89,6 +96,8 @@ const Login = () => {
 
                 </div>
             </Form >
+
+            {/* Google Sign In */}
             <div className='text-center'><SocialLogin></SocialLogin></div>
         </div >
     );

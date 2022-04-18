@@ -12,6 +12,7 @@ const Appoinment = () => {
             <h1>Name: {user.displayName}</h1>
             <h3>Email: {user.email}</h3>
             <div className='mt-5 pick-a-time mb-4'>
+                
                 <p className='fs-3 fw-bold'>Pick a time</p>
                 <p>
                     <Button className='time-button' variant="primary">10.00</Button>{' '}

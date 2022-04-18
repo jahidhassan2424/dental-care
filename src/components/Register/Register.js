@@ -10,7 +10,6 @@ import Toast from './../Shared/Toast';
 import { async } from '@firebase/util';
 import SocialLogin from './../Shared/SocialLogin/SocialLogin';
 
-
 const Register = () => {
     const [
         createUserWithEmailAndPassword,
@@ -18,14 +17,11 @@ const Register = () => {
         loading,
         error,
     ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
-
     const emailRef = useRef('');
     const passwordRef = useRef('');
     const [agree, setAgree] = useState(false);
-
     const navigate = useNavigate();
     const [updateProfile, updating, error1] = useUpdateProfile(auth);
-
     const handleRegister = async (event) => {
         event.preventDefault();
         const displayName = event.target.name.value;
@@ -33,12 +29,8 @@ const Register = () => {
         const password = passwordRef.current.value;
         if (email) {
             await createUserWithEmailAndPassword(email, password)
-
         }
         updateProfile({ displayName })
-
-
-
     }
     if (user) {
         navigate("/");
@@ -50,6 +42,8 @@ const Register = () => {
     }
     return (
         <div className='login-body'>
+
+            {/* Custom Toast Message */}
             <ToastContainer
                 position="top-right"
                 autoClose={2000}
@@ -62,6 +56,7 @@ const Register = () => {
                 pauseOnHover
             />
 
+            {/* Registration Form */}
             <Form onSubmit={handleRegister} className='container  '>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <h1 className='text-center'>Register</h1>
@@ -99,6 +94,8 @@ const Register = () => {
 
                 </div>
             </Form>
+
+            {/* Social Login Section */}
             <div className='text-center'>
                 <SocialLogin></SocialLogin>
             </div>

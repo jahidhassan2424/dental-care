@@ -1,3 +1,6 @@
+.home-body{
+        margin-top: 1%;
+    }
 .slide-title {
     
     display: block;
@@ -11,4 +14,11 @@
     font-size: 20px !important;
     
 }
+
+@media all and (max-width: 768px){
+    .home-body{
+        margin-top: 2%;
+    }
+}
+
 

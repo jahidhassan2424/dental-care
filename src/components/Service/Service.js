@@ -6,9 +6,7 @@ import { useNavigate } from 'react-router-dom';
 const Service = ({ service }) => {
     const navigate = useNavigate();
     const { name, img, price, description } = service;
-    const handleAppoinment = () => {
-        navigate("/appoinment")
-    }
+
     return (
         <div >
             <CardGroup   >
@@ -19,7 +17,8 @@ const Service = ({ service }) => {
                         <Card.Text>
                             {description.slice(0, 150)}
                         </Card.Text>
-                        <button onClick={handleAppoinment} className='btn d-block mx-auto my-2 mt-5 px-3 py-2 roundedManual '>Book Appoinment</button>
+                        <p className='fw-bold fs-2 text-center'>${price}</p>
+                        <button onClick={() => navigate("/appoinment")} className='btn d-block mx-auto my-2 mt-5 px-3 py-2 roundedManual '>Book Appoinment</button>
                     </Card.Body>
 
                 </Card>

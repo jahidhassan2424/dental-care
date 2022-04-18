@@ -10,7 +10,10 @@ import Reviews from '../Reviews/Reviews';
 
 const Home = () => {
     return (
-        <div>
+        <div className='home-body'>
+
+            {/* Slider Starts */}
+
             <Carousel className='container '>
                 <Carousel.Item interval={1000}>
                     <img
@@ -45,6 +48,8 @@ const Home = () => {
                     </Carousel.Caption>
                 </Carousel.Item>
             </Carousel>
+
+            {/* Slider End */}
 
 
             {/*********************************** 

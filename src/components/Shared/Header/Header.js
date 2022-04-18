@@ -28,6 +28,7 @@ const Header = () => {
                             <Nav.Link as={Link} className='text-white hover-effect' to="/">HOME</Nav.Link>
                             <Nav.Link as={Link} className='text-white hover-effect' to="services">SERVICES</Nav.Link>
                             <Nav.Link as={Link} className='text-white hover-effect' to="about">ABOUT</Nav.Link>
+                            <Nav.Link as={Link} className='text-white hover-effect' to="blogs">BLOGS</Nav.Link>
                             {
                                 user ?
                                     <>

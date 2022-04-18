@@ -4,6 +4,8 @@ import './Reviews.css'
 
 const Reviews = () => {
     const [reviews, setReviews] = useState([]);
+
+    // Load Reviews Data
     useEffect(() => {
         fetch('reviews.json')
             .then(res => res.json())
