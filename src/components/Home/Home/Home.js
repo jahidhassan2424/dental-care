@@ -5,6 +5,7 @@ import image1 from '../../../images/image1.jpg';
 import image2 from '../../../images/iamge2.jpg';
 import iamge3 from '../../../images/iamge3.jpg';
 import Services from './../../Services/Services';
+import Reviews from '../Reviews/Reviews';
 
 
 const Home = () => {
@@ -51,6 +52,10 @@ const Home = () => {
              ********************************/}
             <Services></Services>
 
+            {/*********************************** 
+                       Review Section 
+             ********************************/}
+            <Reviews></Reviews>
         </div>
     );
 };

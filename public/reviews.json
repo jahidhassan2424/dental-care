@@ -1,0 +1,24 @@
+[
+   {
+      "id":1,
+      
+      "name":"Jonathan",
+      "rating":5,
+      "img":"https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
+      "comment":"We had a very pleasant experience with Dr. Jahid and his staff. My daughter was very anxious about the appointment and any procedure, but Dr. Jahid was very patient with his and spend a lot of time trying to calm his down, the staff was very helpful and kind and always available to help. Dr. Jahid is very professional, she takes the time to explain what needs to be done and provides valuable advice , It's not easy to find a good dentist for your kids, I highly recommend Dr. Jahid and his staff for kids and adults."
+   },
+   {
+      "id":2,
+      "name":"Jack",
+      "rating":4,
+      "img":"https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
+      "comment":"I desperately needed dentures and I am on MassHealth. A cloud hangs over the people who are on MassHealth and the providers of their services. There are no words to describe how WONDERFUL my experience with Pleasant Street Dental is with Dr. Jahid and his staff! Greeted with respect, dignity and a deep desire to provide the best possible care for his patients and their many, diverse needs. Fitting dentures to an individual is quite a daunting challenge to say the least. Patience, persistents and perseverance is what it takes with each individual and Dr. Jahid and his staff come through with flying colors! Alway's warm and welcoming and not satisfied until their patient is happy with whatever work may have been needed! My gratitude for Dr. Jahid and his staff goes beyond the stars! There is no other dentist I would go to or recommend! When you find the best, you keep it! Sincerely, Susan Mara"
+   },
+   {
+      "id":3,
+      "name":"Isack",
+      "rating":5,
+      "img":"https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
+      "comment":"Dr. Jahid is an excellent dentist. He took the time to explain every procedure he was doing. For example, when I got my teeth whitened, Dr. Jahid was very supportive, and thorough when explaining the process. He is a professional and has a naturally lovely personality. I would recommend Dr. Jahid to everyone. He is the best dentist I have ever had."
+   }
+]
