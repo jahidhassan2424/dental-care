@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import './Login.css'
 import { Button, Form } from 'react-bootstrap';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuthState, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import auth from './../../firebase.init';
 import { useUpdatePassword } from 'react-firebase-hooks/auth';
@@ -11,6 +11,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
+    const location = useLocation();
     const [
         signInWithEmailAndPassword,
         user,
@@ -49,6 +50,11 @@ const Login = () => {
     if (error) {
         console.log(error);
     }
+    let from = location.state?.from?.pathname || "/";
+
+    if (user) {
+        navigate(from, { replace: true });
+    }
 
     return (
         <div className='login-body'>
@@ -58,7 +64,6 @@ const Login = () => {
                     <h1 className='text-center'>Login</h1>
                     <Form.Label className='fs-4'>Email address</Form.Label>
                     <Form.Control ref={emailRef} name="email" type="email" placeholder="Enter email" />
-
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -84,6 +89,8 @@ const Login = () => {
                         }
 
                     }}>Forget Password?</p >
+
+                    
                 </div>
             </Form >
         </div >

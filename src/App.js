@@ -9,6 +9,8 @@ import Login from './components/Login/Login';
 import Footer from './components/Shared/Footer/Footer';
 import Register from './components/Register/Register';
 import Services from './components/Services/Services';
+import Appoinment from './components/Appoinment/Appoinment';
+import RequiredAuth from './components/RequiredAuth/RequiredAuth';
 
 function App() {
   return (
@@ -21,11 +23,19 @@ function App() {
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/services' element={<Services></Services>}></Route>
         <Route path='/register' element={<Register></Register>}></Route>
-      </Routes>
+
+        <Route path='/appoinment' element={
+          <RequiredAuth>
+            <Appoinment></Appoinment>
+          </RequiredAuth>
+        }></Route>
+
+      </Routes >
+
       <Footer></Footer>
 
 
-    </div>
+    </div >
   )
 }
 
