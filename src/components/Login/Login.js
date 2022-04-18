@@ -9,6 +9,7 @@ import { useSendEmailVerification } from 'react-firebase-hooks/auth';
 import { useSendPasswordResetEmail } from 'react-firebase-hooks/auth';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import SocialLogin from '../Shared/SocialLogin/SocialLogin';
 
 const Login = () => {
     const location = useLocation();
@@ -75,7 +76,7 @@ const Login = () => {
 
                 <div className='text-center mt-5 mb-3'>
                     <Button className='submit-button' variant="primary" type="submit">
-                        Submit
+                        LOGIN
                     </Button>
                     <p className='text-danger forget-pass' onClick={async () => {
                         {
@@ -90,9 +91,9 @@ const Login = () => {
 
                     }}>Forget Password?</p >
 
-                    
                 </div>
             </Form >
+            <div className='text-center'><SocialLogin></SocialLogin></div>
         </div >
     );
 };
