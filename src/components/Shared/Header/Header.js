@@ -8,7 +8,7 @@ import { signOut } from 'firebase/auth';
 
 const Header = () => {
     const [user, loading, error] = useAuthState(auth);
-    console.log(user);
+
     const handleSignOut = () => {
         signOut(auth);
     }
@@ -31,7 +31,8 @@ const Header = () => {
                             {
                                 user ?
                                     <>
-                                        <Nav.Link as={Link} className='text-white hover-effect' to="login">{
+                                        <Nav.Link as={Link} className='text-white hover-effect' to="appoinment">APPOINMENT</Nav.Link>
+                                        <Nav.Link as={Link} className='text-white hover-effect' to="/">{
                                             user.displayName ?
                                                 `HELLO ${user.displayName}`
                                                 :

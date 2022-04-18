@@ -26,11 +26,7 @@ const Login = () => {
     const emailRef = useRef('');
     const passRef = useRef('');
 
-    const [sendEmailVerification, sendingVerification, errorVerification] = useSendEmailVerification(auth);
     const [sendPasswordResetEmail, sendingReset, errorReset] = useSendPasswordResetEmail(auth);
-    const [updatePassword, updating, error1] = useUpdatePassword(auth);
-
-
 
     const handleLogin = event => {
         event.preventDefault();
@@ -64,12 +60,12 @@ const Login = () => {
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <h1 className='text-center'>Login</h1>
                     <Form.Label className='fs-4'>Email address</Form.Label>
-                    <Form.Control ref={emailRef} name="email" type="email" placeholder="Enter email" />
+                    <Form.Control ref={emailRef} name="email" type="email" placeholder="Enter email" required />
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicPassword">
                     <Form.Label className='fs-4'>Password</Form.Label>
-                    <Form.Control ref={passRef} name="password" type="password" placeholder="Password" />
+                    <Form.Control ref={passRef} name="password" type="password" placeholder="Password" required />
                 </Form.Group>
                 <p className='text-danger fw-bold'>{error?.message}</p>
                 <p className='fs-5'>New to Dental Care? <Link className='text-decoration-none text-danger fw-bold' to={'/register'}>Register</Link></p>

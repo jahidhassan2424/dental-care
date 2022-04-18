@@ -15,7 +15,7 @@ const Footer = () => {
 
             <SocialIcon className='social-icon' style={{ height: 40, width: 40 }} network="twitter" fgColor="#ffff" url="https://twitter.com/jahid_hassan_" />
 
-            <p >All Right Reserved @ Dental Care, {year}</p>
+            <p >All Right Reserved © Dental Care, {year}</p>
         </div>
     );
 };

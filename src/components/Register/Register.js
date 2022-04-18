@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
@@ -8,6 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useUpdateProfile } from 'react-firebase-hooks/auth';
 import Toast from './../Shared/Toast';
 import { async } from '@firebase/util';
+import SocialLogin from './../Shared/SocialLogin/SocialLogin';
 
 
 const Register = () => {
@@ -16,9 +17,10 @@ const Register = () => {
         user,
         loading,
         error,
-    ] = useCreateUserWithEmailAndPassword(auth);
-    const registeredToast = () => toast("Succesfully Registered");
+    ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
 
+    const emailRef = useRef('');
+    const passwordRef = useRef('');
     const [agree, setAgree] = useState(false);
 
     const navigate = useNavigate();
@@ -27,22 +29,23 @@ const Register = () => {
     const handleRegister = async (event) => {
         event.preventDefault();
         const displayName = event.target.name.value;
-        const email = event.target.email.value;
-        const password = event.target.password.value;
-        await createUserWithEmailAndPassword(email, password)
-            .then(result => {
-                console.log(result)
-                registeredToast();
-                console.log('Toast showed');
+        const email = emailRef.current.value;
+        const password = passwordRef.current.value;
+        if (email) {
+            await createUserWithEmailAndPassword(email, password)
 
-            })
+        }
         updateProfile({ displayName })
 
-        navigate("/");
+
 
     }
-
+    if (user) {
+        navigate("/");
+    }
+    let erroMessage;
     if (error) {
+        erroMessage = <>{error.message}</>;
         console.log(error);
     }
     return (
@@ -64,17 +67,18 @@ const Register = () => {
                     <h1 className='text-center'>Register</h1>
 
                     <Form.Label className='fs-4'>Your Name</Form.Label>
-                    <Form.Control name="name" type="text" placeholder="Enter Name" />
+                    <Form.Control name="name" type="text" placeholder="Enter Name" required />
 
                     <Form.Label className='fs-4 mt-3'>Email address</Form.Label>
-                    <Form.Control name="email" type="email" placeholder="Enter email" />
+                    <Form.Control name="email" type="email" placeholder="Enter email" required />
 
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicPassword">
                     <Form.Label className='fs-4'>Password</Form.Label>
-                    <Form.Control name="password" type="password" placeholder="Password" />
+                    <Form.Control ref={passwordRef} name="password" type="password" placeholder="Password" required />
                 </Form.Group>
+                <p>{erroMessage}</p>
                 <Form.Group className="mb-3" controlId="formBasicCheckbox">
                     <Form.Check onClick={() => setAgree(!agree)} className='text-danger fw-bold' type="checkbox" label="Agree to Tearms and Condition" />
                 </Form.Group>
@@ -83,7 +87,7 @@ const Register = () => {
                 <div className='text-center mt-5 mb-3'>
                     {
                         agree ?
-                            <Button className='submit-button' variant="primary" type="submit">
+                            <Button ref={emailRef} className='submit-button' variant="primary" type="submit">
                                 Register
                             </Button>
                             :
@@ -95,6 +99,9 @@ const Register = () => {
 
                 </div>
             </Form>
+            <div className='text-center'>
+                <SocialLogin></SocialLogin>
+            </div>
         </div>
     );
 };
