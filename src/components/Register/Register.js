@@ -5,6 +5,7 @@ import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import auth from './../../firebase.init';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useUpdateProfile } from 'react-firebase-hooks/auth';
 import Toast from './../Shared/Toast';
 import { async } from '@firebase/util';
 
@@ -21,10 +22,11 @@ const Register = () => {
     const [agree, setAgree] = useState(false);
 
     const navigate = useNavigate();
+    const [updateProfile, updating, error1] = useUpdateProfile(auth);
 
     const handleRegister = async (event) => {
         event.preventDefault();
-        const name = event.target.name.value;
+        const displayName = event.target.name.value;
         const email = event.target.email.value;
         const password = event.target.password.value;
         await createUserWithEmailAndPassword(email, password)
@@ -34,6 +36,7 @@ const Register = () => {
                 console.log('Toast showed');
 
             })
+        updateProfile({ displayName })
 
         navigate("/");
 

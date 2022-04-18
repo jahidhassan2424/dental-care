@@ -31,7 +31,12 @@ const Header = () => {
                             {
                                 user ?
                                     <>
-                                        <Nav.Link as={Link} className='text-white hover-effect' to="login">Hello {user.displayName}</Nav.Link>
+                                        <Nav.Link as={Link} className='text-white hover-effect' to="login">{
+                                            user?.displayName ?
+                                                `HELLO ${user.displayName}`
+                                                :
+                                                ""
+                                        }</Nav.Link>
                                         <Nav.Link onClick={handleSignOut} as={Link} className='text-white hover-effect' to="login">SIGN OUT</Nav.Link>
 
                                     </>
