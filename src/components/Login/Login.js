@@ -36,11 +36,9 @@ const Login = () => {
         const password = event.target.password.value;
         signInWithEmailAndPassword(email, password)
             .then(result => {
-                toast("Login Successful!");
+
             })
-            .catch(error => {
-                console.log(error.message);
-            })
+
     }
 
 
