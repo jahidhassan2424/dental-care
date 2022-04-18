@@ -18,7 +18,7 @@ const Login = () => {
                     <Form.Label className='fs-4'>Password</Form.Label>
                     <Form.Control type="password" placeholder="Password" />
                 </Form.Group>
-                <p>New to Dental Care? <Link to={'register'}>Register</Link></p>
+                <p className='fs-5'>New to Dental Care? <Link className='text-decoration-none text-danger fw-bold' to={'/register'}>Register</Link></p>
 
                 <div className='text-center mt-5 mb-3'>
                     <Button className='submit-button' variant="primary" type="submit">
